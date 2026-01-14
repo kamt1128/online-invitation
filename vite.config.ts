@@ -10,10 +10,6 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       strategies: "generateSW",
-      includeAssets: [
-        "icons/icon-192.png",
-        "icons/icon-512.png"
-      ],
       manifest: {
         name: "Mis 15 Años - Mariana Isabel",
         short_name: "Mis 15",

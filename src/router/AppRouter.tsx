@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Invitacion from "../pages/Invitacion";
 import AdminGuard from "./AdminGuard";
 import Dashboard from "../admin/pages/Dashboard";
@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter basename="/online-invitation">
+    <HashRouter>
       <Routes>
         <Route path="/:token" element={<Invitacion />} />
         <Route path="/login" element={<Login />} />
@@ -20,6 +20,6 @@ export default function AppRouter() {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
