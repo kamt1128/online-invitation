@@ -4,6 +4,11 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/online-invitation/",
+  server: {
+    host: true,
+    port: 5173,
+  },
   plugins: [
     react(),
     VitePWA({

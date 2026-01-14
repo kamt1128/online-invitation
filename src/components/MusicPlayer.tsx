@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 import "../styles/_music.scss";
+import speakerOn from "../assets/speaker-on.svg";
+import speakerOff from "../assets/speaker-off.svg";
+
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -19,9 +22,9 @@ export default function MusicPlayer() {
 
   return (
     <div className="music-player">
-      <audio ref={audioRef} loop src="/musica.mp3" />
+      <audio ref={audioRef} loop src="/vals.mp3" />
       <button onClick={toggleMusic}>
-        {playing ? "🔊 Música activada" : "🔈 Activar música"}
+        {playing ? <img src={speakerOn} alt="Speaker On" className="music-player__speaker" /> : <img src={speakerOff} alt="Speaker On" className="music-player__speaker" />}
       </button>
     </div>
   );

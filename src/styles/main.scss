@@ -1,0 +1,210 @@
+@use "./variables" as variable;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  width: 100%;
+}
+
+body {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 12cm;
+    margin: 0 auto;
+    position: relative;
+}
+
+.fondo-radial-top {
+  background: radial-gradient(
+    circle at center 100px,
+    variable.$orchid 0%,
+    variable.$lilac 25%,
+    variable.$lavender 50%,
+    variable.$lilac 100%
+  );
+}
+
+.fondo-radial-center {
+  background: radial-gradient(
+    circle at center center,
+    variable.$lilac 0%,
+    variable.$orchid 70%,
+    variable.$royal 100%,
+  );
+}
+
+.fondo-degradado-suave {
+  background: linear-gradient(
+    180deg,
+    variable.$lavender 0%,
+    variable.$lilac 40%,
+    variable.$orchid 75%,
+    variable.$royal 100%
+  );
+}
+
+.fondo-degradado-nocturno {
+  background: linear-gradient(
+    180deg,
+    variable.$dark 0%,
+    variable.$royal 45%,
+    variable.$orchid 80%,
+    variable.$lavender 100%
+  );
+}
+
+.fondo-degradado-brillo {
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(255, 255, 255, 0.35),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      variable.$lavender 0%,
+      variable.$lilac 45%,
+      variable.$royal 100%
+    );
+}
+
+.border-vintage {
+    height: 100%;
+    padding: 4px;
+    display: grid;
+    place-items: center;
+    background-image: url(../assets/left-top.svg),
+              url(../assets/right-top.svg),
+              url(../assets/left-bottom.svg),
+              url(../assets/right-bottom.svg);
+    background-position: left top, right top, left bottom, right bottom;
+    background-size: 150px auto;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+.motivo {
+    font-family: "Playfair Display", serif;
+    color: variable.$gold-2;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
+    &--capitalize {
+      font-family: "Playfair Display", serif;
+      text-transform: capitalize;
+      font-size: 1.2rem;
+    }
+}
+
+.float-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.background-card {
+  opacity: 0.2;
+  overflow-x: hidden;
+  &__image {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.panel-confirmacion {
+  position: relative;
+  color: variable.$dark;
+  text-align: center;
+  &__info {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+}
+
+.cupos {
+  &__label {
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+}
+
+.cupos-botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 1.5rem;
+  &__btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 2px solid variable.$royal;
+    color: variable.$royal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 8px;
+    width: fit-content;
+    &--activo {
+      background-color: variable.$royal;
+      color: #fff;
+    }
+  }
+}
+
+.confirmacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 48px;
+  padding-bottom: 48px;
+  &__btn {
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 2px solid variable.$royal;
+    cursor: pointer;
+    &--ok {
+      background-color: variable.$royal;
+      color: #ffffff;
+    }
+    &--no {
+      background-color: transparent;
+      color: variable.$royal;
+    }
+  }
+}
+
+.confirmed-invitation {
+  position: relative;
+  font-family: "Inter", serif;
+  text-align: center;
+  line-height: 1.5;
+  padding-bottom: 32px;
+  &__title {
+    color: variable.$dark;
+    font-size: 1.1rem;
+  }
+  &__message {
+    color: variable.$royal;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}

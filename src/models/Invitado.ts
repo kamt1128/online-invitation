@@ -4,8 +4,8 @@ export interface Invitado {
   id: string;
   nombre: string;
   cuposAsignados: number;
-  cuposConfirmados: number | null;
-  confirmado: boolean | null;
+  cuposConfirmados: number;
+  confirmado: boolean;
   fechaConfirmacion: Timestamp | null;
   token: string;
   canalEnvio?: "whatsapp" | "email";

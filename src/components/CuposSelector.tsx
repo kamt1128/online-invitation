@@ -17,12 +17,12 @@ export default function CuposSelector({
         ¿Cuántas personas asistirán?
       </p>
 
-      <div className="cupos__botones">
+      <div className="cupos-botones">
         {Array.from({ length: max }, (_, i) => (
           <motion.button
             key={i}
             onClick={() => onChange(i + 1)}
-            className={value === i + 1 ? "activo" : ""}
+            className={"cupos-botones__btn " + (value === i + 1 ? "cupos-botones__btn--activo" : "")}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
           >

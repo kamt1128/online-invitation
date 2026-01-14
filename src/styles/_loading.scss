@@ -1,0 +1,14 @@
+.loading {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    &__image {
+        position: relative;
+        z-index: 9999;
+    }
+    &__motivo {
+        position: absolute;
+        top: calc(50% + 30px);
+    }
+}

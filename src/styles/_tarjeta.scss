@@ -1,43 +1,70 @@
-@import "./variables";
+@use "./variables" as variable;
 
 .tarjeta {
-  background: linear-gradient(180deg, $lavender, $orchid);
-  border-radius: 28px;
-  padding: 2.5rem;
   text-align: center;
-  color: $purple-dark;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-
+  color: variable.$dark;
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  margin: 0 auto;
   &__nombre {
-    font-family: "Playfair Display", serif;
-    font-size: 2.6rem;
-    margin-bottom: 0.2rem;
+    position: relative;
+    top: -16px;
   }
 
   &__motivo {
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-top: -110px;
   }
 
-  &__mensaje {
-    font-size: 0.95rem;
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
+  .content {
+    padding: 16px;
   }
 
   &__invitado {
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    &--name {
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-size: 1.8rem;
+    }
   }
 
-  &__detalle p {
-    margin: 0.2rem 0;
+  &__mensaje {
+    font-family: "Great Vibes", cursive;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+    padding: 0 8px;
+  }
+
+  .detalle-date {
+    background: url(../assets/background-date.png) no-repeat center center;
+    background-size: contain;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.3rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    span {
+      width: fit-content;
+    }
+    &__day {
+      padding: 0 32px;
+      font-size: 3rem;
+    }
   }
 
   &__direccion {
     font-size: 0.85rem;
     margin-top: 0.4rem;
+    font-weight: 600;
   }
 
   &__vestuario {
@@ -49,15 +76,12 @@
     font-size: 0.9rem;
   }
 
-  &__regalo {
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
-  }
-
   &__final {
-    border-top: 1px solid $purple-royal;
-    margin-top: 2rem;
+    border-top: 1px solid variable.$royal;
+    border-bottom: 1px solid variable.$royal;
+    margin-top: 1.5rem;
     padding-top: 1rem;
+    padding-bottom: 1rem;
     font-weight: 600;
 
     &--italic {
@@ -67,11 +91,37 @@
   }
 }
 
+.tarjeta-regalo {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+    &__icon {
+      width: 24px;
+    }
+    &__text {
+      width: fit-content;
+      font-weight: 600;
+    }
+  }
+
 .mapa-btn {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: $purple-dark;
+  color: variable.$dark;
   text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-weight: 500;
+  &__icon {
+    width: 16px;
+  }
 }
 

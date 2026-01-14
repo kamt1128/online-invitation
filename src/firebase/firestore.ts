@@ -25,7 +25,7 @@ export const confirmarAsistencia = async (
 
 export const rechazarAsistencia = async (id: string): Promise<void> => {
   await updateDoc(doc(db, "invitados", id), {
-    confirmado: false,
+    confirmado: true,
     cuposConfirmados: 0,
     fechaConfirmacion: serverTimestamp()
   });
