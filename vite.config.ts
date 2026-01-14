@@ -14,8 +14,8 @@ export default defineConfig({
         name: "Mis 15 Años - Mariana Isabel",
         short_name: "Mis 15",
         description: "Invitación digital a los quince años de Mariana Isabel",
-        theme_color: "#7F16C9",
-        background_color: "#EADCF8",
+        theme_color: "#8a0cd2",
+        background_color: "#d980f8",
         display: "standalone",
         start_url: "/online-invitation/#/",
         icons: [
