@@ -5,15 +5,15 @@ import { VitePWA } from "vite-plugin-pwa";
 // https://vite.dev/config/
 export default defineConfig({
   base: "/online-invitation/",
-  server: {
-    host: true,
-    port: 5173,
-  },
   plugins: [
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "icons/*.png"],
+      strategies: "generateSW",
+      includeAssets: [
+        "icons/icon-192.png",
+        "icons/icon-512.png"
+      ],
       manifest: {
         name: "Mis 15 Años - Mariana Isabel",
         short_name: "Mis 15",
@@ -21,7 +21,7 @@ export default defineConfig({
         theme_color: "#7F16C9",
         background_color: "#EADCF8",
         display: "standalone",
-        start_url: "/",
+        start_url: "/online-invitation/",
         icons: [
           {
             src: "/online-invitation/icons/icon-192.png",
