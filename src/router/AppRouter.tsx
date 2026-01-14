@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/online-invitation">
       <Routes>
         <Route path="/:token" element={<Invitacion />} />
         <Route path="/login" element={<Login />} />
