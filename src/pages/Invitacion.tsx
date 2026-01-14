@@ -42,7 +42,7 @@ export default function Invitacion() {
       {!invitado.confirmado && (
           <div className="panel-confirmacion">
             <p className="panel-confirmacion__info">
-              Tienes {invitado.cuposAsignados} cupos reservados
+              Tienes {invitado.cuposAsignados} cupo(s) reservado(s)
             </p>
 
             {invitado.cuposAsignados > 1 && (

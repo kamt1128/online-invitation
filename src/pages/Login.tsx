@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginAdmin } from "../firebase/auth";
-import backgroundCard from "../assets/background-card.svg";
 import "../styles/_login.scss";
 
 export default function Login() {
@@ -22,9 +21,6 @@ export default function Login() {
 
   return (
     <div className="login fondo-radial-center">
-      <div className="background-card float-element">
-        <img src={backgroundCard} alt="Background Card" className="background-card__image" />
-      </div>
       <form onSubmit={submit} className="login-form">
         <h2 className="login-form__title">Panel Administrador</h2>
 

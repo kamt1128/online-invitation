@@ -3,8 +3,7 @@ export const generarLinkWhatsApp = (
   nombre: string,
   token: string
 ): string => {
-  const mensaje = `
-Hola *${nombre}*.
+  const mensaje = `Hola *${nombre}*,
 
 Acompáñame en esta fecha especial, estás invitado/a a celebrar mis 15 años.
 
@@ -13,8 +12,7 @@ Acompáñame en esta fecha especial, estás invitado/a a celebrar mis 15 años.
 *Lugar:* Salón de eventos CHELISHA
 
 Confirma tu asistencia aquí:
-https://kamt1128.github.io/online-invitation/#/${token}
-  `;
+https://kamt1128.github.io/online-invitation/#/${token}`;
 
   return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 };

@@ -74,6 +74,7 @@
   &__colores {
     font-style: italic;
     font-size: 0.9rem;
+    margin-top: 4px;
   }
 
   &__final {
@@ -87,6 +88,35 @@
     &--italic {
       font-style: italic;
       font-weight: normal;
+    }
+  }
+}
+
+.colores-set {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  &__color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    &--lavender {
+      background-color: variable.$lavender;
+    }
+    &--lilac {
+      background-color: variable.$lilac;
+    }
+    &--orchid {
+      background-color: variable.$orchid;
+    }
+    &--royal {
+      background-color: variable.$royal;
+    }
+    &--dark {
+      background-color: variable.$dark;
     }
   }
 }

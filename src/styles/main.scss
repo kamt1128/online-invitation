@@ -131,7 +131,7 @@ body {
   text-align: center;
   &__info {
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 }
 
@@ -152,15 +152,15 @@ body {
   &__btn {
     padding: 8px 16px;
     background-color: transparent;
-    border: 2px solid variable.$royal;
-    color: variable.$royal;
+    border: 2px solid variable.$dark;
+    color: variable.$dark;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
     border-radius: 8px;
     width: fit-content;
     &--activo {
-      background-color: variable.$royal;
+      background-color: variable.$dark;
       color: #fff;
     }
   }
@@ -179,15 +179,15 @@ body {
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.8rem;
-    border: 2px solid variable.$royal;
+    border: 2px solid variable.$dark;
     cursor: pointer;
     &--ok {
-      background-color: variable.$royal;
+      background-color: variable.$dark;
       color: #ffffff;
     }
     &--no {
       background-color: transparent;
-      color: variable.$royal;
+      color: variable.$dark;
     }
   }
 }

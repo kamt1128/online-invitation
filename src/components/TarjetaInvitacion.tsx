@@ -58,7 +58,14 @@ export default function TarjetaInvitacion({
         <div className="tarjeta__vestuario">
           <p><strong>Código de vestuario:</strong> Formal</p>
           <p className="tarjeta__colores">
-            <strong>Colores reservados:</strong> Tonos de morado
+            <strong>Colores reservados:</strong>
+            <div className="colores-set">
+              <span className="colores-set__color colores-set__color--lavender"></span>
+              <span className="colores-set__color colores-set__color--lilac"></span>
+              <span className="colores-set__color colores-set__color--orchid"></span>
+              <span className="colores-set__color colores-set__color--royal"></span>
+              <span className="colores-set__color colores-set__color--dark"></span>
+            </div>
           </p>
         </div>
 
