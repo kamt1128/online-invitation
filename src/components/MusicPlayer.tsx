@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import "../styles/_music.scss";
 import speakerOn from "../assets/speaker-on.svg";
 import speakerOff from "../assets/speaker-off.svg";
+import musicMp3 from "../assets/vals.mp3";
+
+
 
 
 export default function MusicPlayer() {
@@ -22,7 +25,7 @@ export default function MusicPlayer() {
 
   return (
     <div className="music-player">
-      <audio ref={audioRef} loop src="/vals.mp3" />
+      <audio ref={audioRef} loop src={musicMp3} />
       <button onClick={toggleMusic}>
         {playing ? <img src={speakerOn} alt="Speaker On" className="music-player__speaker" /> : <img src={speakerOff} alt="Speaker On" className="music-player__speaker" />}
       </button>
