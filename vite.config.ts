@@ -17,7 +17,7 @@ export default defineConfig({
         theme_color: "#7F16C9",
         background_color: "#EADCF8",
         display: "standalone",
-        start_url: "/online-invitation/",
+        start_url: "/online-invitation/#/",
         icons: [
           {
             src: "/online-invitation/icons/icon-192.png",
