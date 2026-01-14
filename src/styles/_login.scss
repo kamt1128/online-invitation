@@ -1,0 +1,71 @@
+@use "./variables" as variable;
+
+.login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.background-card__image {
+    height: auto;
+    width: 100%;
+}
+
+.login-form {
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255 ,0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25), -2px -2px 10px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    &__title {
+        color: variable.$royal;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    &__input {
+        padding: 8px;
+        border-radius: 8px;
+        border: 2px solid variable.$royal;
+        background-color: transparent;
+        color: variable.$royal;
+        font-size: 0.8rem;
+        width: 100%;
+        max-width: 300px;
+        &:focus-visible {
+            outline: none;
+        }
+    }
+    &__btn {
+        padding: 8px 16px;
+        background-color: variable.$royal;
+        border: 2px solid variable.$royal;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border-radius: 8px;
+        width: fit-content;
+    }
+}
+
+.error {
+    font-size: 0.8rem;
+    color: red;
+    text-align: center
+}

@@ -9,46 +9,48 @@ export default function InvitadosTable({
   invitados,
 }: Props) {
   return (
-    <table className="tabla-invitados">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Cupos</th>
-          <th>Confirmados</th>
-          <th>Estado</th>
-          <th>WhatsApp</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {invitados.map(inv => (
-          <tr key={inv.id}>
-            <td>{inv.nombre}</td>
-            <td>{inv.cuposAsignados}</td>
-            <td>{inv.cuposConfirmados ?? "-"}</td>
-            <td>
-              {inv.confirmado === true && "✅ Confirmado"}
-              {inv.confirmado === false && "❌ No asiste"}
-              {inv.confirmado === null && "⏳ Pendiente"}
-            </td>
-            <td>
-              {inv.telefono && (
-                <a
-                  href={generarLinkWhatsApp(
-                    inv.telefono,
-                    inv.nombre,
-                    inv.id
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  📩 Enviar
-                </a>
-              )}
-            </td>
+    <div className="table-wrapper">
+      <table className="table-invitados">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Cupos</th>
+            <th>Confirmados</th>
+            <th>Estado</th>
+            <th>WhatsApp</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          {invitados.map(inv => (
+            <tr key={inv.id}>
+              <td>{inv.nombre}</td>
+              <td>{inv.cuposAsignados}</td>
+              <td>{inv.cuposConfirmados ?? "-"}</td>
+              <td>
+                {inv.confirmado === true && "✅ Confirmado"}
+                {inv.confirmado === true && inv.cuposConfirmados <= 0 && "❌ No asistirá"}
+                {inv.confirmado === false && "⏳ Pendiente"}
+              </td>
+              <td>
+                {inv.telefono && (
+                  <a
+                    href={generarLinkWhatsApp(
+                      inv.telefono,
+                      inv.nombre,
+                      inv.id
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ➜ Enviar
+                  </a>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

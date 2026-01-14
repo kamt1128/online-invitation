@@ -4,15 +4,16 @@ export const generarLinkWhatsApp = (
   token: string
 ): string => {
   const mensaje = `
-Hola ${nombre} 💜
-Estás invitado/a a celebrar mis 15 años ✨
+Hola *${nombre}*.
 
-📅 Enero 31 de 2026
-🕖 7:00 p.m.
-📍 Salón de eventos CHELISHA
+Acompáñame en esta fecha especial, estás invitado/a a celebrar mis 15 años.
+
+*Fecha:* Enero 31 de 2026
+*Hora:* 7:00 p.m.
+*Lugar:* Salón de eventos CHELISHA
 
 Confirma tu asistencia aquí:
-https://tus15.web.app/inv/${token}
+https://kamt1128.github.io/online-invitation/#/${token}
   `;
 
   return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
