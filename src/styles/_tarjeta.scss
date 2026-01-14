@@ -23,9 +23,9 @@
   &__invitado {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     line-height: 1.4;
-    font-size: 0.9rem;
+    font-size: 1rem;
     &--name {
       font-family: "Great Vibes", cursive;
       font-weight: 400;
@@ -38,6 +38,12 @@
     font-size: 1.6rem;
     margin-bottom: 1.2rem;
     line-height: 1.1;
+  }
+
+  .tarjeta-detalle {
+    &__text {
+      line-height: 1.5
+    }
   }
 
   .detalle-date {
@@ -64,22 +70,27 @@
     font-size: 0.85rem;
     margin-top: 0.4rem;
     font-weight: 600;
+    line-height: 1.5;
   }
 
   &__vestuario {
     margin-top: 1.5rem;
+    font-size: 1.1rem;
+    strong {
+      font-size: 1rem;
+    }
   }
 
   &__colores {
     font-style: italic;
-    font-size: 0.9rem;
-    margin-top: 4px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
   }
 
   &__final {
     border-top: 1px solid variable.$royal;
     border-bottom: 1px solid variable.$royal;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-weight: 600;
@@ -97,7 +108,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 4px;
+  margin-top: 8px;
   &__color {
     width: 24px;
     height: 24px;
@@ -121,7 +132,7 @@
 }
 
 .tarjeta-regalo {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -129,11 +140,12 @@
     width: 100%;
     gap: 8px;
     &__icon {
-      width: 24px;
+      width: 32px;
     }
     &__text {
       width: fit-content;
       font-weight: 600;
+      line-height: 0;
     }
   }
 

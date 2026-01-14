@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import "../styles/_tarjeta.scss";
 import MapaButton from "./MapaButton";
-import MusicPlayer from "./MusicPlayer";
 import marianaIsabel from "../assets/mariana-isabel.png";
 import envelope from "../assets/envelope.svg";
-
-
 
 interface Props {
   nombreInvitado: string;
@@ -21,7 +18,6 @@ export default function TarjetaInvitacion({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <MusicPlayer />
       <img src={marianaIsabel} alt="Mariana Isabel" className="tarjeta__nombre" />
       <h2 className="tarjeta__motivo motivo">
         <span className="motivo--capitalize">M</span>is
@@ -46,8 +42,8 @@ export default function TarjetaInvitacion({
             <span className="detalle-date__day">31</span>
             <span className="detalle-date__year">2026</span>
           </div>
-          <p><strong>Hora:</strong> 7:00 p.m.</p>
-          <p><strong>Lugar:</strong> Salón de eventos <strong>CHELISHA</strong></p>
+          <p className="tarjeta-detalle__text"><strong>Hora:</strong> 7:00 p.m.</p>
+          <p className="tarjeta-detalle__text"><strong>Lugar:</strong> Salón de eventos <strong>CHELISHA</strong></p>
           <p className="tarjeta__direccion">
             Barrio Los Alpes CLL 31D #71E34<br />
             (Entrando por el antiguo fogón cartagenero)
@@ -58,7 +54,7 @@ export default function TarjetaInvitacion({
         <div className="tarjeta__vestuario">
           <p><strong>Código de vestuario:</strong> Formal</p>
           <p className="tarjeta__colores">
-            <strong>Colores reservados:</strong>
+            <strong>Colores reservados:</strong> Tonos de morados
             <div className="colores-set">
               <span className="colores-set__color colores-set__color--lavender"></span>
               <span className="colores-set__color colores-set__color--lilac"></span>

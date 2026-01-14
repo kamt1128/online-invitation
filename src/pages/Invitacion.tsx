@@ -8,6 +8,7 @@ import { confirmarAsistencia, obtenerInvitadoPorToken, rechazarAsistencia } from
 import Loading from "../components/loading";
 import ConfirmModal from "../components/ConfirmModal";
 import backgroundCard from "../assets/background-card.svg";
+import MusicPlayer from "../components/MusicPlayer";
 
 
 export default function Invitacion() {
@@ -20,7 +21,18 @@ export default function Invitacion() {
   const [modalRechazar, setModalRechazar] = useState(false);
 
   useEffect(() => {
-    if (token) obtenerInvitadoPorToken(token).then(setInvitado);
+    if (!token) return;
+
+    const loadInvitado = async () => {
+      const data = await obtenerInvitadoPorToken(token);
+
+      if (!data) return;
+
+      setInvitado(data);
+      setCupos(data.cuposAsignados);
+    };
+
+    loadInvitado();
   }, [token]);
 
   const reloadInvitado = async () => {
@@ -37,6 +49,7 @@ export default function Invitacion() {
         <img src={backgroundCard} alt="Background Card" className="background-card__image" />
       </div>
       <div className="border-vintage float-element"></div>
+      <MusicPlayer />
       <TarjetaInvitacion nombreInvitado={invitado.nombre} />
 
       {!invitado.confirmado && (

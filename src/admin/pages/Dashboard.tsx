@@ -10,6 +10,7 @@ import AdminHeader from "../components/AdminHeader";
 import "../../styles/_dashboard.scss";
 import AddInvitadoForm from "../components/AddInvitadoForm";
 import { motion } from "framer-motion";
+import LoadingAdmin from "../components/LoadingAdmin";
 
 export default function Dashboard() {
   const [invitados, setInvitados] = useState<Invitado[]>([]);
@@ -34,7 +35,7 @@ export default function Dashboard() {
     };
   }, []);
 
-  if (loading) return <div className="loading-dashboard">Cargando dashboard...</div>;
+  if (loading) return <LoadingAdmin />;
 
   const stats = calcularMetricas(invitados);
 

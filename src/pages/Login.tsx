@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginAdmin } from "../firebase/auth";
+import marianaIsabel from "../assets/mariana-isabel.png";
 import "../styles/_login.scss";
 
 export default function Login() {
@@ -21,6 +22,7 @@ export default function Login() {
 
   return (
     <div className="login fondo-radial-center">
+      <img src={marianaIsabel} alt="Mariana Isable" className="login__brand" />
       <form onSubmit={submit} className="login-form">
         <h2 className="login-form__title">Panel Administrador</h2>
 
