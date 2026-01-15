@@ -15,30 +15,32 @@
   background-color: variable.$royal;
 }
 
+@media (max-width: 768px) {
+  .admin-header {
+    padding: 8px 16px;
+  }
+}
+
 .admin-header-title {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   width: auto;
-  flex-grow: 1;
   &__icon {
-    width: 24px;
-    height: 24px;
+    width: 48px;
   }
   &__text {
-    flex-grow: 1;
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
-    display: contents;
+    width: 200px;
   }
 }
 
 @media (max-width: 768px) {
   .admin-header-title {
-    flex-grow: initial;
+    flex-grow: 1;
+    &__icon {
+      display: none;
+    }
   }
 }
 
@@ -48,8 +50,8 @@
     border: none;
     cursor: pointer;
     &__icon {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -64,12 +66,13 @@
     margin: 16px;
     width: calc(100% - 32px);
     border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 768px) {
   .stats {
     gap: 16px;
-    padding: 16px;
+    padding: 16px 8px;
     margin: 8px;
     width: calc(100% - 16px);
   }
@@ -78,14 +81,14 @@
 .stat-card {
     border-radius: 16px;
     width: 150px;
-    height: 100px;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: #fff;
     line-height: 1;
-    padding: 16px 8px;
+    padding: 16px;
     &__value {
         font-size: 4rem;
         width: fit-content;
@@ -94,26 +97,28 @@
     &__label {
         text-align: center;
         font-size: 0.8rem;
+        line-height: 1.2;
+        min-height: 32px;
     }
 }
 
 @media (max-width: 768px) {
   .stat-card {
     width: 100px;
-    height: 100px;
     line-height: 1.5;
     &__value {
         font-size: 3rem;
     }
      &__label {
         line-height: 1.2;
+        font-size: 0.7rem;
     }
   }
 }
 
 @media (max-width: 576px) {
   .stat-card {
-    padding: 8px;
+    padding: 12px 8px 8px;
     &__value {
         font-size: 2.5rem;
     }
@@ -129,6 +134,9 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   width: calc(100% - 32px);
   margin: 0 16px;
+  min-height: 100px;
+  display: grid;
+  place-items: center;
 }
 
 @media (max-width: 768px) {
@@ -305,15 +313,14 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   display: flex;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  width: calc(100% - 32px);
-  margin: 0 16px 16px;
+  width: 80%;
+  margin: 0 auto 16px;
 
   .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
 
     label {
       font-size: 0.85rem;
@@ -325,7 +332,7 @@
       padding: 0.6rem 0.8rem;
       border-radius: 8px;
       border: 1px solid #ddd;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
 
       &:focus {
         outline: none;
@@ -373,6 +380,20 @@
 
     .form-group {
       margin-bottom: 0;
+
+      label {
+        font-size: 0.8rem;
+      }
+
+      input {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    button {
+      padding: 0.6rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -406,6 +427,15 @@
 @keyframes spin {
   from  { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.loading-data-message,
+.no-data-message {
+  text-align: center;
+  font-size: "Montserrat", sans-serif;
+  color: #ccc;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 

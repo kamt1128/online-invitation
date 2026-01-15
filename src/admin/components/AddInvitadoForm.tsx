@@ -43,6 +43,7 @@ export default function AddInvitadoForm({ onCreated }: Props) {
           onChange={(e) => setNombre(e.target.value)}
           placeholder="Ej. Juan Pérez"
           required
+          disabled={loading}
         />
       </div>
 
@@ -51,6 +52,8 @@ export default function AddInvitadoForm({ onCreated }: Props) {
         <input
           type="text"
           value={cupos}
+          disabled={loading}
+          required
           onChange={(e) => setCupos(e.target.value)}
         />
       </div>
@@ -60,6 +63,8 @@ export default function AddInvitadoForm({ onCreated }: Props) {
         <input
           type="text"
           value={telefono}
+          disabled={loading}
+          required
           onChange={(e) => setTelefono(e.target.value)}
         />
       </div>

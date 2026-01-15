@@ -42,7 +42,7 @@ export const calcularMetricas = (invitados: Invitado[]) => {
   const rechazados = invitados.filter(i => i.confirmado === true && i.cuposConfirmados <= 0);
   const pendientes = invitados.filter(i => i.confirmado === false);
 
-  const personasConfirmadas = confirmados.reduce(
+  const cuposConfirmados = confirmados.reduce(
     (acc, i) => acc + (i.cuposConfirmados ?? 0),
     0
   );
@@ -52,12 +52,21 @@ export const calcularMetricas = (invitados: Invitado[]) => {
     0
   );
 
+  const cuposLiberados = invitados.reduce(
+    (acc, i) =>
+      i.confirmado
+        ? acc + (i.cuposAsignados - i.cuposConfirmados)
+        : acc,
+    0
+  );
+
   return {
     totalInvitados: invitados.length,
     confirmados: confirmados.length,
     rechazados: rechazados.length,
     pendientes: pendientes.length,
-    personasConfirmadas,
-    cuposLibres: cuposAsignados - personasConfirmadas,
+    cuposConfirmados,
+    cuposPendientes: cuposAsignados - cuposConfirmados - cuposLiberados,
+    cuposLiberados,
   };
 };

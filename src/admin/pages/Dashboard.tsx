@@ -15,6 +15,7 @@ import LoadingAdmin from "../components/LoadingAdmin";
 export default function Dashboard() {
   const [invitados, setInvitados] = useState<Invitado[]>([]);
   const [loading, setLoading] = useState(true);
+  const [updatingTable, setUpdatingTable] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -26,6 +27,7 @@ export default function Dashboard() {
 
       setInvitados(data);
       setLoading(false);
+      setUpdatingTable(false);
     };
 
     fetchInvitados();
@@ -49,26 +51,27 @@ export default function Dashboard() {
       <AdminHeader />
 
       <div className="stats">
-        <StatsCard label="Invitados" value={stats.totalInvitados} color="red" />
-        <StatsCard label="Confirmados" value={stats.confirmados} color="blue" />
-        <StatsCard label="Pendientes" value={stats.pendientes} color="green" />
-        <StatsCard label="No asisten" value={stats.rechazados} color="gray" />
+        <StatsCard label="Invitaciones creadas" value={stats.totalInvitados} color="blue" />
+        <StatsCard label="Invitaciones confirmadas" value={stats.confirmados} color="purple" />
+        <StatsCard label="Invitaciones rechazadas" value={stats.rechazados} color="gray" />
+        <StatsCard label="Invitaciones pendientes" value={stats.pendientes} color="orange" />
         <StatsCard
-          label="Personas confirmadas"
-          value={stats.personasConfirmadas}
-          color="purple"
+          label="Cupos confirmados"
+          value={stats.cuposConfirmados}
+          color="green"
         />
-        <StatsCard label="Cupos libres" value={stats.cuposLibres} color="orange" />
+        <StatsCard label="Cupos pendientes" value={stats.cuposPendientes} color="red" />
+        <StatsCard label="Cupos liberados" value={stats.cuposLiberados} color="brown" />
       </div>
       <AddInvitadoForm
         onCreated={async () => {
-          setLoading(true);
+          setUpdatingTable(true);
           const data = await obtenerInvitados();
           setInvitados(data);
-          setLoading(false);
+          setUpdatingTable(false);
         }}
       />
-      <InvitadosTable invitados={invitados} />
+      <InvitadosTable invitados={invitados} loadingData={updatingTable} />
     </motion.div>
   );
 }
