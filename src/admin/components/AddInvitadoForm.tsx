@@ -7,7 +7,7 @@ interface Props {
 
 export default function AddInvitadoForm({ onCreated }: Props) {
   const [nombre, setNombre] = useState("");
-  const [cupos, setCupos] = useState(1);
+  const [cupos, setCupos] = useState("");
   const [telefono, setTelefono] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -19,10 +19,10 @@ export default function AddInvitadoForm({ onCreated }: Props) {
     try {
       setLoading(true);
 
-      await crearInvitado(nombre.trim(), cupos, telefono.trim());
+      await crearInvitado(nombre.trim(), Number(cupos), telefono.trim());
 
       setNombre("");
-      setCupos(1);
+      setCupos("");
       setTelefono("");
       onCreated(); 
     } catch (error) {
@@ -49,9 +49,9 @@ export default function AddInvitadoForm({ onCreated }: Props) {
       <div className="form-group">
         <label>Cupos asignados</label>
         <input
-          type="number"
+          type="text"
           value={cupos}
-          onChange={(e) => setCupos(Number(e.target.value))}
+          onChange={(e) => setCupos(e.target.value)}
         />
       </div>
 
