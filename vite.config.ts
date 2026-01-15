@@ -1,8 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// https://vite.dev/config/
 export default defineConfig({
   base: "/online-invitation/",
   plugins: [
@@ -10,27 +9,34 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       strategies: "generateSW",
+
       manifest: {
-        name: "Mis 15 Años - Mariana Isabel",
+        name: "Invitación Mariana Isabel",
         short_name: "Mis 15",
-        description: "Invitación digital a los quince años de Mariana Isabel",
-        theme_color: "#8a0cd2",
-        background_color: "#d980f8",
+        description: "Invitación digital de quince años",
+        start_url: "/online-invitation/",
+        scope: "/online-invitation/",
         display: "standalone",
-        start_url: "/online-invitation/#/",
+        background_color: "#d980f8",
+        theme_color: "#8a0cd2",
+        orientation: "portrait",
         icons: [
           {
             src: "/online-invitation/icons/icon-192.png",
             sizes: "192x192",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "/online-invitation/icons/icon-512.png",
             sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
-    })
+            type: "image/png",
+          },
+        ],
+      },
+
+      workbox: {
+        navigateFallback: "/online-invitation/index.html",
+      },
+    }),
   ],
-})
+});
