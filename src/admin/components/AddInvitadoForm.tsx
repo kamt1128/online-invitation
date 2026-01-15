@@ -1,15 +1,27 @@
-import { useState } from "react";
-import { crearInvitado } from "../services/invitados.service";
+import { useEffect, useState } from "react";
+import { actualizarInvitado, crearInvitado } from "../services/invitados.service";
+import type { Invitado } from "../../models/Invitado";
 
 interface Props {
+  invitado: Invitado | null;
   onCreated: () => void;
 }
 
-export default function AddInvitadoForm({ onCreated }: Props) {
+export default function AddInvitadoForm({ invitado, onCreated }: Props) {
   const [nombre, setNombre] = useState("");
   const [cupos, setCupos] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [idEdit, setIdEdit] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (invitado) {
+      setIdEdit(invitado.id);
+      setNombre(invitado.nombre);
+      setCupos(String(invitado.cuposAsignados));
+      setTelefono(String(invitado.telefono));
+    }
+  }, [invitado]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,16 +31,30 @@ export default function AddInvitadoForm({ onCreated }: Props) {
     try {
       setLoading(true);
 
-      await crearInvitado(nombre.trim(), Number(cupos), telefono.trim());
+      if (idEdit) {
+        await actualizarInvitado(
+          idEdit,
+          nombre.trim(),
+          Number(cupos),
+          telefono.trim(),
+        );
+      } else {
+        await crearInvitado(
+          nombre.trim(),
+          Number(cupos),
+          telefono.trim(),
+        );
+      }
 
       setNombre("");
       setCupos("");
       setTelefono("");
-      onCreated(); 
+      setIdEdit("");
+      onCreated();
     } catch (error) {
-      console.error("Error creando invitado", error);
+        console.error("Error creando invitado", error);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
@@ -68,10 +94,22 @@ export default function AddInvitadoForm({ onCreated }: Props) {
           onChange={(e) => setTelefono(e.target.value)}
         />
       </div>
-
-      <button type="submit" disabled={loading}>
-        {loading ? "Guardando..." : "Agregar invitación"}
-      </button>
+      <div className="buttons-form-set">
+        <button type="button"
+          disabled={loading}
+          onClick={() => {
+            setNombre("");
+            setCupos("");
+            setTelefono("");
+            setIdEdit("");
+          }}
+          className="buttons-form-set__btn buttons-form-set__btn--outline">
+            {idEdit === "" ? "Resetear" : "Cancelar"}
+        </button>
+        <button type="submit" disabled={loading} className="buttons-form-set__btn">
+          {loading ? "Guardando..." : (idEdit === "" ? "Agregar invitación" : "Editar invitación")}
+        </button>
+      </div>
     </form>
   );
 }

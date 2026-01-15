@@ -16,6 +16,7 @@ export default function Dashboard() {
   const [invitados, setInvitados] = useState<Invitado[]>([]);
   const [loading, setLoading] = useState(true);
   const [updatingTable, setUpdatingTable] = useState(true);
+  const [invEdit, setInvEdit] = useState<Invitado | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -41,6 +42,11 @@ export default function Dashboard() {
 
   const stats = calcularMetricas(invitados);
 
+  const editInvitado = async (inv: Invitado) => {
+    setInvEdit(inv);
+    window.scrollTo(0, 0);
+  }
+
   return (
     <motion.div 
       className="dashboard"
@@ -64,6 +70,7 @@ export default function Dashboard() {
         <StatsCard label="Cupos liberados" value={stats.cuposLiberados} color="brown" />
       </div>
       <AddInvitadoForm
+        invitado={invEdit}
         onCreated={async () => {
           setUpdatingTable(true);
           const data = await obtenerInvitados();
@@ -71,7 +78,7 @@ export default function Dashboard() {
           setUpdatingTable(false);
         }}
       />
-      <InvitadosTable invitados={invitados} loadingData={updatingTable} />
+      <InvitadosTable invitados={invitados} loadingData={updatingTable} onEdit={editInvitado} />
     </motion.div>
   );
 }

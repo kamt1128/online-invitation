@@ -1,10 +1,12 @@
 import {
   addDoc,
   collection,
+  doc,
   getDocs,
   orderBy,
   query,
   QuerySnapshot,
+  updateDoc,
   type DocumentData,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
@@ -21,6 +23,19 @@ export const crearInvitado = async (
     cuposConfirmados: 0,
     confirmado: false,
     telefono
+  });
+};
+
+export const actualizarInvitado = async (
+  id: string,
+  nombre: string,
+  cuposAsignados: number,
+  telefono: string,
+) => {
+  await updateDoc(doc(db, "invitados", id), {
+    nombre,
+    cuposAsignados,
+    telefono,
   });
 };
 

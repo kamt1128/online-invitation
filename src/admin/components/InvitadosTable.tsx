@@ -4,11 +4,13 @@ import { generarLinkWhatsApp } from "../services/whatsapp.service";
 interface Props {
   invitados: Invitado[];
   loadingData: boolean;
+  onEdit: (invitado: Invitado) => void;
 }
 
 export default function InvitadosTable({
   invitados,
   loadingData,
+  onEdit,
 }: Props) {
   return (
     <div className="table-wrapper">
@@ -26,7 +28,7 @@ export default function InvitadosTable({
                 <th>Cupos</th>
                 <th>Confirmados</th>
                 <th>Estado</th>
-                <th>WhatsApp</th>
+                <th></th>
               </tr>
             </thead>
 
@@ -54,7 +56,12 @@ export default function InvitadosTable({
                   </td>
                   <td className="column column--confirmed">{inv.cuposConfirmados}<span className="divisor">/</span>{inv.cuposAsignados}</td>
                   {inv.confirmado === false
-                    ? ( <td className="column column--send">
+                    ? ( <td className="column column--options">
+                          {inv.id && (
+                            <button onClick={() => onEdit(inv)} className="option-btn option-btn--outline">
+                              Editar
+                            </button>
+                          )}
                           {inv.telefono && (
                             <a
                               href={generarLinkWhatsApp(
@@ -64,13 +71,14 @@ export default function InvitadosTable({
                               )}
                               target="_blank"
                               rel="noopener noreferrer"
+                              className="option-btn"
                             >
-                              ➜ Enviar
+                              Enviar
                             </a>
                           )}
                         </td>
                       )
-                    : (<td className="column column--send"></td>)
+                    : (<td className="column column--options"></td>)
                   }
                 </tr>
               ))}

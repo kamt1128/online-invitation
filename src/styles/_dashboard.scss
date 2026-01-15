@@ -191,6 +191,29 @@
     &--confirmed {
       display: none;
     }
+    &--options {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 16px;
+
+      .option-btn {
+        background-color: variable.$royal;
+        color: #ffffff;
+        border-radius: 4px;
+        padding: 4px 8px;
+        text-decoration: none;
+        width: auto;
+        height: 25px;
+        display: grid;
+        place-items: center;
+        &--outline {
+          border: 1px solid variable.$royal;
+          color: variable.$royal;
+          background-color: transparent;
+        }
+      }
+    }
   }
 
   tbody tr {
@@ -289,17 +312,8 @@
           padding: 0 2px;
         }
       }
-      &--send {
-        justify-content: flex-end;
-        align-items: flex-end;
-        a {
-          background-color: variable.$royal;
-          color: #ffffff;
-          border-radius: 4px;
-          padding: 4px 8px;
-          text-decoration: none;
-          width: auto;
-        }
+      &--options {
+        gap: 8px;
       }
     }
   }
@@ -338,27 +352,43 @@
         outline: none;
         border-color: variable.$orchid;
       }
+
+      &:nth-child(1) {
+        min-width: 200px;
+      }
     }
   }
 
-  button {
-    width: 100%;
-    max-width: 200px;
-    background: linear-gradient(
-      90deg,
-      variable.$orchid,
-      variable.$royal
-    );
-    color: white;
-    border: none;
-    padding: 0.7rem;
-    border-radius: 999px;
-    font-weight: 600;
-    cursor: pointer;
+  .buttons-form-set {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    &__btn {
+      width: 170px;
+      background: linear-gradient(
+        90deg,
+        variable.$orchid,
+        variable.$royal
+      );
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
 
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      &--outline {
+        width: 150px;
+        background: none;
+        color: variable.$royal;
+        border: 1px solid variable.$royal;
+      }
     }
   }
 
@@ -391,9 +421,12 @@
       }
     }
 
-    button {
-      padding: 0.6rem;
-      font-size: 0.8rem;
+    .buttons-form-set {
+      &__btn {
+        width: 150px;
+        padding: 0.6rem;
+        font-size: 0.8rem;
+      }
     }
   }
 
