@@ -9,6 +9,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       strategies: "generateSW",
+      injectRegister: "auto",
 
       manifest: {
         name: "Invitación Mariana Isabel",
@@ -35,6 +36,9 @@ export default defineConfig({
       },
 
       workbox: {
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
         navigateFallback: "/online-invitation/index.html",
       },
     }),
