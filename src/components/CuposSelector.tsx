@@ -13,7 +13,7 @@ export default function CuposSelector({
 }: Props) {
   return (
     <div className="cupos">
-      <p className="cupos__label">Selecciona el número de personas asistirán</p>
+      <p className="cupos__label">Selecciona el número de personas que asistirán</p>
 
       <div className="cupos-botones">
         {Array.from({ length: max }, (_, i) => (
