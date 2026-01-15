@@ -50,8 +50,6 @@ export default function AddInvitadoForm({ onCreated }: Props) {
         <label>Cupos asignados</label>
         <input
           type="number"
-          min={1}
-          max={10}
           value={cupos}
           onChange={(e) => setCupos(Number(e.target.value))}
         />

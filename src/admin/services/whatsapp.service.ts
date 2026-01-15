@@ -14,5 +14,5 @@ Acompáñame en esta fecha especial, estás invitado/a a celebrar mis 15 años.
 Confirma tu asistencia aquí:
 https://kamt1128.github.io/online-invitation/#/${token}`;
 
-  return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+  return `https://wa.me/+57${telefono}?text=${encodeURIComponent(mensaje)}`;
 };
