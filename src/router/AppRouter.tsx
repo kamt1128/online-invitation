@@ -1,4 +1,4 @@
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, Navigate } from "react-router-dom";
 import Invitacion from "../pages/Invitacion";
 import AdminGuard from "./AdminGuard";
 import Dashboard from "../admin/pages/Dashboard";
@@ -19,6 +19,7 @@ export default function AppRouter() {
             </AdminGuard>
           }
         />
+        <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>
     </HashRouter>
   );
