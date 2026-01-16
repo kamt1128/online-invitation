@@ -1,16 +1,8 @@
 import { motion } from "framer-motion";
 import "../styles/_tarjeta.scss";
-import MapaButton from "./MapaButton";
 import marianaIsabel from "../assets/mariana-isabel.png";
-import envelope from "../assets/envelope.svg";
 
-interface Props {
-  nombreInvitado: string;
-}
-
-export default function TarjetaInvitacion({
-  nombreInvitado,
-}: Props) {
+export default function TarjetaInvitacion() {
   return (
     <motion.div 
       className="tarjeta"
@@ -26,54 +18,38 @@ export default function TarjetaInvitacion({
       </h2>
 
       <div className="content">
-        <p className="tarjeta__invitado">
-          Querido/a<br />
-          <strong className="tarjeta__invitado--name">{nombreInvitado}</strong>
-        </p>
-
         <p className="tarjeta__mensaje">
-          "Bajo el amparo del Altísimo y en compañía de mis padres tenemos el gran
-          honor de invitarles a celebrar con nosotros"
+          "Todo tiene su tiempo, y hoy es el de agradecer  a Dios, por el don de la vida."
+        </p>
+        <p className="tarjeta-detalle__text" style={{maxWidth: "350px", margin: "0 auto 1rem", lineHeight: "1.3", fontWeight: "600"}}>
+          Tengo la alegría de invitarte a celebrar mis quince años.
         </p>
 
         <div className="tarjeta-detalle">
           <div className="detalle-date">
             <span className="detalle-date__month">Enero</span>
-            <span className="detalle-date__day">31</span>
+            <span className="detalle-date__day">29</span>
             <span className="detalle-date__year">2026</span>
           </div>
-          <p className="tarjeta-detalle__text"><strong>Hora:</strong> 7:00 p.m.</p>
-          <p className="tarjeta-detalle__text"><strong>Lugar:</strong> Salón de eventos <strong>CHELISHA</strong></p>
+          <p className="tarjeta-regalo" style={{fontSize: "1.2rem", fontWeight: "500", marginBottom: "0.5rem"}}>
+            Eucaristía de Acción de Gracias
+          </p>
+          <p className="tarjeta-detalle__text"><strong>Hora:</strong> 6:00 p.m.</p>
+          <p className="tarjeta-detalle__text"><strong>Lugar:</strong> Parroquia San Juan Bosco</p>
+
+          <p className="tarjeta-regalo" style={{fontSize: "1.05rem", fontWeight: "500", maxWidth: "360px", margin: "1rem auto 1rem", lineHeight: "1.3"}}>
+            Al terminar la misa, te espero en mi casa para compartir el tradicional brindis y corte de la torta
+          </p>
           <p className="tarjeta__direccion">
-            Barrio Los Alpes CLL 31D #71E34<br />
-            (Entrando por el antiguo fogón cartagenero)
+            Barrio San Fernando,<br />
+            Calle Kalamary No. 01, Mz 06, Lote 03
           </p>
-          <MapaButton />
-        </div>
-
-        <div className="tarjeta__vestuario">
-          <p><strong>Código de vestuario:</strong> Formal</p>
-          <p className="tarjeta__colores">
-            <strong>Colores reservados:</strong> Tonos de morados
-            <div className="colores-set">
-              <span className="colores-set__color colores-set__color--lavender"></span>
-              <span className="colores-set__color colores-set__color--lilac"></span>
-              <span className="colores-set__color colores-set__color--orchid"></span>
-              <span className="colores-set__color colores-set__color--royal"></span>
-              <span className="colores-set__color colores-set__color--dark"></span>
-            </div>
-          </p>
-        </div>
-
-        <div className="tarjeta-regalo">
-          <img src={envelope} alt="Envelope" className="tarjeta-regalo__icon" />
-          <span className="tarjeta-regalo__text">Lluvia de sobres</span>
         </div>
 
         <div className="tarjeta__final">
-          <p>¡Eres parte de mi historia!</p>
+          <p>Tu compañía es muy importante para mí.</p>
           <p className="tarjeta__final--italic">
-            Acompáñame en esta fecha especial.
+            ¡Te esperamos!
           </p>
         </div>
       </div>

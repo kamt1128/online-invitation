@@ -1,4 +1,4 @@
-import { Routes, Route, HashRouter, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import Invitacion from "../pages/Invitacion";
 import AdminGuard from "./AdminGuard";
 import Dashboard from "../admin/pages/Dashboard";
@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 
 export default function AppRouter() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/:token" element={<Invitacion />} />
         <Route path="/login" element={<Login />} />
@@ -21,6 +21,6 @@ export default function AppRouter() {
         />
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
