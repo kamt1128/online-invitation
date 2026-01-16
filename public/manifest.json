@@ -1,11 +1,11 @@
 {
-  "name": "Invitación Mariana Isabel",
-  "short_name": "Mis 15",
-  "description": "Invitación digital de quince años",
+  "name": "Invitación digital",
+  "short_name": "Invita Digital",
+  "description": "Invitación digital a eventos formales",
   "start_url": "/online-invitation/#/admin/",
   "scope": "/online-invitation/#/admin/",
   "display": "standalone",
-  "background_color": "#d980f8",
+  "background_color": "#8a0cd2",
   "theme_color": "#8a0cd2",
   "orientation": "portrait",
   "icons": [
