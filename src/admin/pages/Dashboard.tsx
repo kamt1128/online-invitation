@@ -81,6 +81,12 @@ export default function Dashboard() {
     [fetchInvitados, debouncedSearch]
   );
 
+  const resetFilters = () => {
+    setSearchFilter(null);
+    setStatusFilter("");
+    fetchInvitados("", null);
+  };
+
   if (loading) return <LoadingAdmin />;
 
   return (
@@ -104,12 +110,21 @@ export default function Dashboard() {
 
       <AddInvitadoForm
         invitado={invEdit}
-        onCreated={() => {setStatusFilter(""); setSearchFilter(null); fetchInvitados(statusFilter, debouncedSearch)}}
+        onCreated={() => {
+          resetFilters();
+          fetchInvitados(statusFilter, debouncedSearch)
+        }}
       />
 
       <div className="table-wrapper">
 
-        <FiltersList onSearch={onSearch} onStatus={onStatus}/>
+        <FiltersList
+          search={searchFilter}
+          status={statusFilter}
+          onSearch={onSearch}
+          onStatus={onStatus}
+          onReset={resetFilters}
+         />
 
         {updatingTable && (
           <p className="loading-data-message">Cargando datos...</p>
