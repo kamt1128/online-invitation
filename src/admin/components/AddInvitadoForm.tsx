@@ -34,9 +34,11 @@ export default function AddInvitadoForm({ invitado, onCreated }: Props) {
       if (idEdit) {
         await actualizarInvitado(
           idEdit,
-          nombre.trim(),
-          Number(cupos),
-          telefono.trim(),
+          {
+            nombre: nombre.trim(),
+            cuposAsignados: Number(cupos),
+            telefono: telefono.trim(),
+          }
         );
       } else {
         await crearInvitado(

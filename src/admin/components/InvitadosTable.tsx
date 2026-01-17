@@ -13,12 +13,7 @@ export default function InvitadosTable({
   onEdit,
 }: Props) {
   return (
-    <div className="table-wrapper">
-      {/* Cargando datos */}
-      { loadingData && ( <p className="loading-data-message">Cargando datos...</p> ) }
-      {/* No hay datos */}
-      { !loadingData && invitados.length <= 0 && ( <p className="loading-data-message">!No hay invitaciones creadas!</p> ) }
-      {/* Listado de datos */}
+    <>
       { !loadingData && invitados.length > 0 && (
           <table className="table-invitados">
             <thead>
@@ -86,6 +81,6 @@ export default function InvitadosTable({
           </table>
         )
       }
-    </div>
+    </>
   );
 }

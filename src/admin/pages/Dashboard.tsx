@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { Invitado } from "../../models/Invitado";
 import {
   obtenerInvitados,
@@ -11,48 +11,84 @@ import "../../styles/_dashboard.scss";
 import AddInvitadoForm from "../components/AddInvitadoForm";
 import { motion } from "framer-motion";
 import LoadingAdmin from "../components/LoadingAdmin";
+import FiltersList from "../components/filtersList";
+import { useDebounce } from "../../hooks/useDebounce";
 
 export default function Dashboard() {
-  const [invitados, setInvitados] = useState<Invitado[]>([]);
   const [loading, setLoading] = useState(true);
-  const [updatingTable, setUpdatingTable] = useState(true);
+  const [updatingTable, setUpdatingTable] = useState(false);
+
+  const [allInvitados, setAllInvitados] = useState<Invitado[]>([]);
+  const [filteredInvitados, setFilteredInvitados] = useState<Invitado[]>([]);
+
   const [invEdit, setInvEdit] = useState<Invitado | null>(null);
 
-  useEffect(() => {
-    let isMounted = true;
+  const [searchFilter, setSearchFilter] = useState<string | null>(null);
+  const [statusFilter, setStatusFilter] = useState<string>("");
 
-    const fetchInvitados = async () => {
-      const data = await obtenerInvitados();
+  // 🔥 debounce aplicado
+  const debouncedSearch = useDebounce(searchFilter, 400);
 
-      if (!isMounted) return;
+  // 🔹 Fetch explícito (evento)
+  const fetchInvitados = useCallback(
+    async (status: string, search: string | null) => {
+      setUpdatingTable(true);
 
-      setInvitados(data);
+      const data = await obtenerInvitados(status, search);
+
+      if ((search && search?.length > 0) || status.length > 0) {
+        setFilteredInvitados(data);
+      } else {
+        setAllInvitados(data);
+        setFilteredInvitados(data);
+      }
       setLoading(false);
       setUpdatingTable(false);
-    };
+    },
+    []
+  );
 
-    fetchInvitados();
+  // 🔹 Carga inicial (UNA sola vez)
+  useState(() => {
+    fetchInvitados("", debouncedSearch);
+  });
 
-    return () => {
-      isMounted = false;
-    };
+  // 🔹 Métricas memorizadas
+  const stats = useMemo(
+    () => calcularMetricas(allInvitados),
+    [allInvitados]
+  );
+
+  const editInvitado = useCallback((inv: Invitado) => {
+    setInvEdit(inv);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  // 🔹 Filtros = eventos
+  const onSearch = useCallback(
+    (search: string | null) => {
+      setSearchFilter(search);
+      fetchInvitados(statusFilter, search);
+    },
+    [fetchInvitados, statusFilter]
+  );
+
+  const onStatus = useCallback(
+    (status: string) => {
+      setStatusFilter(status);
+      fetchInvitados(status, debouncedSearch);
+    },
+    [fetchInvitados, debouncedSearch]
+  );
 
   if (loading) return <LoadingAdmin />;
 
-  const stats = calcularMetricas(invitados);
-
-  const editInvitado = async (inv: Invitado) => {
-    setInvEdit(inv);
-    window.scrollTo(0, 0);
-  }
-
   return (
-    <motion.div 
+    <motion.div
       className="dashboard"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       <AdminHeader />
 
@@ -61,24 +97,34 @@ export default function Dashboard() {
         <StatsCard label="Invitaciones confirmadas" value={stats.confirmados} color="purple" />
         <StatsCard label="Invitaciones rechazadas" value={stats.rechazados} color="gray" />
         <StatsCard label="Invitaciones pendientes" value={stats.pendientes} color="orange" />
-        <StatsCard
-          label="Cupos confirmados"
-          value={stats.cuposConfirmados}
-          color="green"
-        />
+        <StatsCard label="Cupos confirmados" value={stats.cuposConfirmados} color="green" />
         <StatsCard label="Cupos pendientes" value={stats.cuposPendientes} color="red" />
         <StatsCard label="Cupos liberados" value={stats.cuposLiberados} color="brown" />
       </div>
+
       <AddInvitadoForm
         invitado={invEdit}
-        onCreated={async () => {
-          setUpdatingTable(true);
-          const data = await obtenerInvitados();
-          setInvitados(data);
-          setUpdatingTable(false);
-        }}
+        onCreated={() => {setStatusFilter(""); setSearchFilter(null); fetchInvitados(statusFilter, debouncedSearch)}}
       />
-      <InvitadosTable invitados={invitados} loadingData={updatingTable} onEdit={editInvitado} />
+
+      <div className="table-wrapper">
+
+        <FiltersList onSearch={onSearch} onStatus={onStatus}/>
+
+        {updatingTable && (
+          <p className="loading-data-message">Cargando datos...</p>
+        )}
+
+        {!updatingTable && filteredInvitados.length === 0 && (
+          <p className="loading-data-message">¡No hay invitaciones!</p>
+        )}
+
+        <InvitadosTable
+          invitados={filteredInvitados}
+          loadingData={updatingTable}
+          onEdit={editInvitado}
+        />
+      </div>
     </motion.div>
   );
 }
